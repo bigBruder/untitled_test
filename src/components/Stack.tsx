@@ -8,8 +8,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import { createStyles, makeStyles } from "@material-ui/core";
 import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
-import AttachFileRoundedIcon from "@mui/icons-material/AttachFileRounded";
-import { url } from "inspector";
+import data from "../data";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -29,45 +28,6 @@ const useStyles = makeStyles(() => {
     },
   });
 });
-
-const data = [
-  {
-    vector: "",
-    type: "Critical Analysys",
-    subject: "Literature",
-    year: "7",
-    person: "Alphington Grammar",
-    admin: "James Smith",
-    groups: ["INTRO", "WHAT", "HOW", "WHY", "IMAGE", "EXPRESSION"],
-  },
-  {
-    vector: "",
-    type: "Creative Writing",
-    subject: "Literature",
-    year: "7",
-    person: "Only me",
-    admin: "Grace Elliott",
-    groups: "",
-  },
-  {
-    vector: "",
-    type: "Descriptive Essay",
-    subject: "Literature",
-    year: "7",
-    person: "Public",
-    admin: "",
-    groups: "",
-  },
-  {
-    vector: "",
-    type: "Critical Analysys",
-    subject: "Literature",
-    year: "8",
-    person: "Alphington Grammar",
-    admin: "",
-    groups: "",
-  },
-];
 
 export default function BasicStack() {
   const { item } = useStyles();
@@ -92,57 +52,41 @@ export default function BasicStack() {
         <Typography sx={{ width: "10vw" }}>Assessment Admin</Typography>
         <Typography sx={{ width: "15vw" }}>Skill Groups</Typography>
       </Stack>
-      <Stack spacing={3}>
-        <Item className={item}>
-          <SvgIcon sx={{ mr: "65px" }} />
-          <Container
-            sx={{
-              display: "flex",
-              // justifyContent: "space-around",
-              // mr: "-5vw",
-            }}>
-            <Typography sx={{ fontWeight: "700", width: "15vw" }}>
-              Critical Analysys
-            </Typography>
-            <Typography sx={{ width: "10vw" }}>Literature</Typography>
-            <Typography sx={{ width: "5vw" }}>7</Typography>
-            <Typography sx={{ width: "10vw" }}>Alphington Grammar</Typography>
-            <Typography sx={{ width: "10vw" }}>James Smith</Typography>
-          </Container>
-          <Container sx={{ width: "90vw" }}>
-            <Button
-              variant="contained"
-              sx={{ width: "50px", ml: "10px", backgroundColor: "#AD1A72" }}>
-              Intro
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ width: "50px", ml: "10px", backgroundColor: "#6940A5" }}>
-              What
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ width: "50px", ml: "10px", backgroundColor: "#3D9487" }}>
-              How
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ width: "50px", ml: "10px", backgroundColor: "#0B6E99" }}>
-              Why
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ width: "50px", ml: "10px", backgroundColor: "#DFAB01" }}>
-              IMAGE
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ ml: "10px", backgroundColor: "#D9730D" }}>
-              EXPRESSION
-            </Button>
-          </Container>
-          <Menu />
-        </Item>
+      <Stack spacing={5}>
+        {data.map((elem) => (
+          <Item key={elem.id} className={item}>
+            <SvgIcon sx={{ mr: "65px" }} />
+            <Container
+              sx={{
+                display: "flex",
+                // justifyContent: "space-around",
+                // mr: "-5vw",
+              }}>
+              <Typography sx={{ fontWeight: "700", width: "15vw" }}>
+                {elem.type}
+              </Typography>
+              <Typography sx={{ width: "10vw" }}>{elem.subject}</Typography>
+              <Typography sx={{ width: "5vw" }}>7</Typography>
+              <Typography sx={{ width: "10vw" }}>{elem.person}</Typography>
+              <Typography sx={{ width: "10vw" }}>{elem.admin}</Typography>
+            </Container>
+            <Container sx={{ width: "90vw" }}>
+              {elem.groups.map((group) => (
+                <Button
+                  key={group}
+                  variant="contained"
+                  sx={{
+                    width: "50px",
+                    ml: "10px",
+                    // backgroundColor: {group.backgroundColor},
+                  }}>
+                  {group.name}
+                </Button>
+              ))}
+            </Container>
+            <Menu />
+          </Item>
+        ))}
       </Stack>
     </Box>
   );
