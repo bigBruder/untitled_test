@@ -1,21 +1,25 @@
+import { Clip } from "./assets";
+
+export type Group = {
+  name: string;
+  backgroundColor: string;
+};
+
 type DataItem = {
   id: number;
-  vector: string;
+  vector: HTMLImageElement;
   type: string;
   subject: string;
   year: string;
   person: string;
   admin: string;
-  groups: {
-    name: string;
-    backgroundColor: string;
-  }[];
+  groups: Group[];
 };
 
 const data: DataItem[] = [
   {
     id: 1,
-    vector: "",
+    vector: Clip,
     type: "Critical Analysys",
     subject: "Literature",
     year: "7",
@@ -32,7 +36,7 @@ const data: DataItem[] = [
   },
   {
     id: 2,
-    vector: "",
+    vector: Clip,
     type: "Creative Writing",
     subject: "Literature",
     year: "7",
@@ -42,7 +46,7 @@ const data: DataItem[] = [
   },
   {
     id: 3,
-    vector: "",
+    vector: Clip,
     type: "Descriptive Essay",
     subject: "Literature",
     year: "7",
@@ -52,10 +56,10 @@ const data: DataItem[] = [
   },
   {
     id: 4,
-    vector: "",
+    vector: Clip,
     type: "Critical Analysys",
     subject: "Literature",
-    year: "8",
+    year: "0",
     person: "Alphington Grammar",
     admin: "",
     groups: [],
