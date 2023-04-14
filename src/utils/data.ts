@@ -1,13 +1,14 @@
-import { Clip } from "./assets";
+import { Clip } from "../assets";
 
 export type Group = {
   name: string;
   backgroundColor: string;
+  color: string;
 };
 
-type DataItem = {
+export type DataRow = {
   id: number;
-  vector: HTMLImageElement;
+  icon: HTMLImageElement;
   type: string;
   subject: string;
   year: string;
@@ -16,27 +17,27 @@ type DataItem = {
   groups: Group[];
 };
 
-const data: DataItem[] = [
+const data: DataRow[] = [
   {
     id: 1,
-    vector: Clip,
+    icon: Clip,
     type: "Critical Analysys",
     subject: "Literature",
     year: "7",
     person: "Alphington Grammar",
     admin: "James Smith",
     groups: [
-      { name: "INTRO", backgroundColor: "#AD1A72" },
-      { name: "WHAT", backgroundColor: "#D6CFE0" },
-      { name: "HOW", backgroundColor: "#3D9487" },
-      { name: "WHY", backgroundColor: "#0B6E99" },
-      { name: "IMAGE", backgroundColor: "#DFAB01" },
-      { name: "EXPRESSION", backgroundColor: "#D9730D" },
+      { name: "INTRO", backgroundColor: "#DABCCE", color: "AD1A72" },
+      { name: "WHAT", backgroundColor: "#D6CFE0", color: "#6940A5" },
+      { name: "HOW", backgroundColor: "#3D9487", color: "#000000" },
+      { name: "WHY", backgroundColor: "#3A89AB", color: "#0B6E99" },
+      { name: "IMAGE", backgroundColor: "#F2C94C", color: "#DFAB01" },
+      { name: "EXPRESSION", backgroundColor: "#D9730D", color: "#FFFFFF" },
     ],
   },
   {
     id: 2,
-    vector: Clip,
+    icon: null,
     type: "Creative Writing",
     subject: "Literature",
     year: "7",
@@ -46,7 +47,7 @@ const data: DataItem[] = [
   },
   {
     id: 3,
-    vector: Clip,
+    icon: null,
     type: "Descriptive Essay",
     subject: "Literature",
     year: "7",
@@ -56,10 +57,10 @@ const data: DataItem[] = [
   },
   {
     id: 4,
-    vector: Clip,
+    icon: Clip,
     type: "Critical Analysys",
     subject: "Literature",
-    year: "0",
+    year: "8",
     person: "Alphington Grammar",
     admin: "",
     groups: [],

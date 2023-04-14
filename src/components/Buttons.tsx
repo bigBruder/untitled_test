@@ -6,23 +6,41 @@ import { Container } from "@mui/material";
 
 export default function Buttons() {
   return (
-    <Stack spacing={2} direction="row">
-      <Container sx={{ ml: "100px" }}>
+    <Stack sx={{ width: "100vw" }} spacing={2} direction="row">
+      <Container sx={{ height: 37, ml: "-10px" }}>
         <Button
           variant="contained"
-          sx={{ backgroundColor: "#333333", borderRadius: "7px" }}>
+          sx={{
+            fontSize: "11px",
+            backgroundColor: "#333333",
+            width: "160px",
+            borderRadius: "7px",
+          }}>
           + Create Template
         </Button>
         <Button
           variant="contained"
-          sx={{ backgroundColor: "#333333", ml: "45px" }}>
+          sx={{
+            fontSize: "11px",
+            backgroundColor: "#333333",
+            width: "165px",
+            ml: "45px",
+          }}>
           ? Search Discovery
         </Button>
       </Container>
       <NativeSelect
         defaultValue={"Alphabetically"}
-        style={{ marginRight: "50px" }}>
+        style={{
+          height: "30px",
+          padding: " 0 10px",
+          marginRight: "50px",
+          backgroundColor: "#FFFFFF",
+          borderRadius: "20px",
+          textDecoration: "none",
+        }}>
         <option>Alphabetically</option>
+        <option>Date</option>
       </NativeSelect>
     </Stack>
   );

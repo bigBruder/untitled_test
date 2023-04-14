@@ -1,74 +1,86 @@
 import Button from "@mui/material/Button";
-import { Container, Typography } from "@mui/material";
-import { Group } from "../data";
-import Paper from "@mui/material/Paper";
-import Menu from ".//Menu";
+import { Typography } from "@mui/material";
+import { Group } from "../utils/data";
+import Menu from "./Menu";
 import Image from "next/image";
 import { createStyles, makeStyles } from "@material-ui/core";
-import { styled } from "@mui/material/styles";
+import { DataRow } from "../utils/data";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
-export default function ItemElem({ elem }) {
-  const useStyles = makeStyles(() => {
-    return createStyles({
-      item: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        height: "100px",
-      },
-    });
+const useStyles = makeStyles(() => {
+  return createStyles({
+    item: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      backgroundColor: "#FFFFFF",
+      alignItems: "center",
+      height: "100px",
+      width: "100vw",
+    },
+    container: {
+      display: "flex",
+      justifyContent: "flex-end",
+      ml: "20px",
+    },
   });
-  console.log(elem);
-  const { item } = useStyles();
-  // const elem = {props}
+});
+
+export const ItemRow = ({
+  id,
+  icon,
+  type,
+  subject,
+  year,
+  admin,
+  person,
+  groups,
+}: DataRow) => {
+  const { item, container } = useStyles();
   return (
-    <Item key={elem.id} className={item}>
-      <Container sx={{ display: "flex" }}>
-        <div style={{ width: "5vw" }}>
-          {elem.vector ? (
-            <Image src={elem.vector} alt="Picture of the author" />
+    <div className={item} key={id}>
+      <div className={container}>
+        <div style={{ width: "2vw", marginLeft: "20px" }}>
+          {icon ? (
+            <Image src={icon} alt="Clip" />
           ) : (
-            <div style={{ width: 20, height: 50 }}></div>
+            <div style={{ width: 20 }}></div>
           )}
         </div>
 
         <div style={{ width: "15vw" }}>
-          <Typography>{elem.type}</Typography>
+          <Typography sx={{ fontWeight: "800", fontSize: "16px" }}>
+            {type}
+          </Typography>
+        </div>
+        <div style={{ width: "8vw" }}>
+          <Typography>{subject}</Typography>
+        </div>
+        <div style={{ width: "5vw" }}>
+          <Typography>{year}</Typography>
         </div>
         <div style={{ width: "15vw" }}>
-          <Typography>{elem.subject}</Typography>
+          <Typography>{person}</Typography>
         </div>
-        <div style={{ width: "15vw" }}>
-          <Typography>7</Typography>
+        <div style={{ width: "13vw" }}>
+          <Typography>{admin}</Typography>
         </div>
-        <div style={{ width: "15vw" }}>
-          <Typography>{elem.person}</Typography>
-        </div>
-        <div style={{ width: "15vw" }}>
-          <Typography>{elem.admin}</Typography>
-        </div>
-        {elem.groups.map((group: Group) => (
+        {groups.map((group: Group) => (
           <Button
-            key={group}
+            key={group.name}
             variant="contained"
             sx={{
-              width: "50px",
-              ml: "10px",
+              fontSize: 8,
+              width: "auto",
+              height: "20px",
+              mr: "10px",
               backgroundColor: group.backgroundColor,
+              color: group.color,
             }}>
             {group.name}
           </Button>
         ))}
-      </Container>
+      </div>
       <Menu />
-    </Item>
+    </div>
   );
-}
+};
