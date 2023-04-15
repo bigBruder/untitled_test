@@ -16,35 +16,83 @@ export default function BasicStack() {
           mb: "20px",
         }}>
         <div style={{ width: "17vw", margin: "15px 0 0 20px" }}>
-          <Typography variant="h6" sx={{ fontSize: "14px", fontWeight: "700" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "700",
+              "@media (max-width: 768px)": {
+                fontSize: "11px",
+              },
+            }}>
             Assessment Type
           </Typography>
         </div>
         <div style={{ width: "8vw" }}>
-          <Typography variant="h6" sx={{ fontSize: "14px", fontWeight: "700" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "700",
+              "@media (max-width: 768px)": {
+                fontSize: "11px",
+              },
+            }}>
             Subject
           </Typography>
         </div>
         <div style={{ width: "5vw" }}>
-          <Typography variant="h6" sx={{ fontSize: "14px", fontWeight: "700" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "700",
+              "@media (max-width: 768px)": {
+                fontSize: "11px",
+              },
+            }}>
             Year
           </Typography>
         </div>
         <div style={{ width: "15vw" }}>
-          <Typography variant="h6" sx={{ fontSize: "14px", fontWeight: "700" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "700",
+              "@media (max-width: 768px)": {
+                fontSize: "11px",
+              },
+            }}>
             Shared with
           </Typography>
         </div>{" "}
         <div style={{ width: "13vw" }}>
-          <Typography variant="h6" sx={{ fontSize: "14px", fontWeight: "700" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "700",
+              "@media (max-width: 768px)": {
+                fontSize: "11px",
+              },
+            }}>
             Assessment Admin
           </Typography>
         </div>
         <div style={{ width: "20vw" }}>
-          <Typography variant="h6" sx={{ fontSize: "14px", fontWeight: "700" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "700",
+              "@media (max-width: 768px)": {
+                fontSize: "11px",
+              },
+            }}>
             Skill Groups
           </Typography>
-        </div>{" "}
+        </div>
       </Stack>
       <Stack spacing={5}>
         {data.map((row: DataRow) => (

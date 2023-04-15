@@ -22,6 +22,11 @@ const useStyles = makeStyles(() => {
       justifyContent: "flex-end",
       ml: "20px",
     },
+    typography: {
+      "@media (max-width: 768px)": {
+        fontSize: "11px",
+      },
+    },
   });
 });
 
@@ -35,7 +40,7 @@ export const ItemRow = ({
   person,
   groups,
 }: DataRow) => {
-  const { item, container } = useStyles();
+  const { item, container, typography } = useStyles();
   return (
     <div className={item} key={id}>
       <div className={container}>
@@ -48,21 +53,26 @@ export const ItemRow = ({
         </div>
 
         <div style={{ width: "15vw" }}>
-          <Typography sx={{ fontWeight: "800", fontSize: "16px" }}>
+          <Typography
+            className={typography}
+            sx={{
+              fontWeight: "800",
+              fontSize: "16px",
+            }}>
             {type}
           </Typography>
         </div>
         <div style={{ width: "8vw" }}>
-          <Typography>{subject}</Typography>
+          <Typography className={typography}>{subject}</Typography>
         </div>
         <div style={{ width: "5vw" }}>
-          <Typography>{year}</Typography>
+          <Typography className={typography}>{year}</Typography>
         </div>
         <div style={{ width: "15vw" }}>
-          <Typography>{person}</Typography>
+          <Typography className={typography}>{person}</Typography>
         </div>
         <div style={{ width: "13vw" }}>
-          <Typography>{admin}</Typography>
+          <Typography className={typography}>{admin}</Typography>
         </div>
         {groups.map((group: Group) => (
           <Button
